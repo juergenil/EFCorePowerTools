@@ -76,7 +76,11 @@
 
         private void Loaded_Executed()
         {
-            Model.SelectedToBeGenerated = 0;
+            if (Model.SelectedToBeGenerated == 2)
+            {
+                // don't include Microsoft.EntityFrameworkCore.SqlServer nuget package if "Entity types only" is selected
+                Model.InstallNuGetPackage = false;
+            }
         }
 
         private void Ok_Executed()
