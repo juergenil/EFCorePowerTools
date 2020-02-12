@@ -25,6 +25,7 @@
                 DialogResult = args.DialogResult;
                 Close();
             };
+            viewModel.IncludeViews = true;
             _getDialogResult = () => (viewModel.SelectedDatabaseConnection, viewModel.SelectedDatabaseDefinition, viewModel.IncludeViews);
             _addConnections = models =>
             {
