@@ -81,6 +81,12 @@ namespace EFCorePowerTools.Handlers
                 if (pickDataSourceResult.Payload.Connection != null)
                 {
                     dbInfo = databaseList.Single(m => m.Value.ConnectionString == pickDataSourceResult.Payload.Connection?.ConnectionString).Value;
+					string connectionName = pickDataSourceResult.Payload.Connection.ConnectionName;
+                    string[] connectionnameParts = connectionName?.Split(new char[] { '.' });
+                    if (connectionnameParts?.Length>=2)
+                    {
+                        optionsPath = Path.Combine(projectPath, $"efpt.{connectionnameParts[1]}.config.json");
+                    }
                 }
                 var dacpacPath = pickDataSourceResult.Payload.Definition?.FilePath;
 
