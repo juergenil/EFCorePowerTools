@@ -189,6 +189,8 @@ namespace EFCorePowerTools.Handlers
                     presets.MapSpatialTypes = options.UseSpatial;
                     presets.MapNodaTimeTypes = options.UseNodaTime;
                 }
+                if (presets.SelectedToBeGenerated == 2)
+                    presets.InstallNuGetPackage = false;
 
                 var modelDialog = _package.GetView<IModelingOptionsDialog>()
                                           .ApplyPresets(presets);
